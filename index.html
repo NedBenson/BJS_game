@@ -1,0 +1,25 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BJS_game</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  
+  <script src="js/babylon.max.js"></script>
+  <script src="js/QueuedInterpolation.1.1.min.js"></script>
+  <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+</head>
+<body>
+<canvas id="renderCanvas" touch-action="none" width="1000px" height="600px" style="border:1px gray solid"></canvas>
+<div style="height:600px">
+    <button onclick="mesh_enable()" style="width=30px;height:30px">enable</button>
+    <button onclick="mesh_disable()" style="width=30px;height:30px">disable</button>
+    <button onclick="RecomputeNormals()" style="width=30px;height:30px">Recomputenormals</button>
+</div>
+
+ <script src="js/Scene.js"></script>
+</body>
+</html>
