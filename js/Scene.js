@@ -43,17 +43,12 @@ function mesh_disable(){
 
 function Recomputenormals(){
     
- BABYLON.Mesh.prototype.ComputeNorms = function() {
-        var indices = this.getIndices();
-        var vertices = this.getVerticesData(BABYLON.VertexBuffer.PositionKind);
-        var normals = this.getVerticesData(BABYLON.VertexBuffer.NormalKind);
-//        var uvs = [];
-        BABYLON.VertexData.ComputeNormals(this.getVerticesData(BABYLON.VertexBuffer.PositionKind),this.getIndices(), this.getVerticesData(BABYLON.VertexBuffer.NormalKind));
-//        BABYLON.VertexData._ComputeSides(BABYLON.Mesh.BACKSIDE,vertices,indices,normals,uvs);
-
-        this.setVerticesData(BABYLON.VertexBuffer.NormalKind, normals);
-    }
+    P = Amesh.getVerticesData(BABYLON.VertexBuffer.PositionKind);
+    N = Amesh.getVerticesData(BABYLON.VertexBuffer.NormalKind);
+    I = Amesh.getIndices();
+    BABYLON.VertexData.ComputeNormals(P, I, N);
+    
+    Amesh.setVerticesData( BABYLON.VertexBuffer.NormalKind, N); 
  
- Amesh.ComputeNorms();
 }
 
