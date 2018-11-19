@@ -10,7 +10,7 @@
         camera.setPosition(new BABYLON.Vector3(0 , 150, -150));    
         // This attaches the camera to the canvas
         camera.attachControl(canvas, false);
-        camera.lowerRadiusLimit = camera.upperRadiusLimit = camera.radius;
+//        camera.lowerRadiusLimit = camera.upperRadiusLimit = camera.radius;
         var light1_front = new BABYLON.HemisphericLight("Omni1", new BABYLON.Vector3(0, 1, -1), scene);
         scene.beforeCameraRender = function () {
         light1_front.intensity = 1.6;        
@@ -29,17 +29,18 @@
 
 function mesh_enable(){
     
-    $.getScript("FQA.js",function(){
-    var A = new FQA.MeshFactory(scene);
-    var Amesh = ctest.instance("FQA")
+    $.getScript("js/UA.js",function(){
+    A = new UA.MeshFactory(scene);
+    Amesh = A.instance("UA")
     Amesh.position = new BABYLON.Vector3(0,50,20);
     })     
 } 
 
 
 function mesh_disable(){
-    if(scene.getMeshByID("FQA")) Amesh.dispose(false,true);
+    if(scene.getMeshByID("UA")) Amesh.dispose(false,true);
 }
+
 function Recomputenormals(){
     
  BABYLON.Mesh.prototype.ComputeNorms = function() {
@@ -50,10 +51,9 @@ function Recomputenormals(){
         BABYLON.VertexData.ComputeNormals(this.getVerticesData(BABYLON.VertexBuffer.PositionKind),this.getIndices(), this.getVerticesData(BABYLON.VertexBuffer.NormalKind));
 //        BABYLON.VertexData._ComputeSides(BABYLON.Mesh.BACKSIDE,vertices,indices,normals,uvs);
 
-        this.setVerticesData(BABYLON.VertexBuffer.PositionKind,vertices);
         this.setVerticesData(BABYLON.VertexBuffer.NormalKind, normals);
-        this.setIndices(indices);
     }
+ 
  Amesh.ComputeNorms();
 }
 
